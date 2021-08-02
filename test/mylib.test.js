@@ -24,3 +24,22 @@ describe('salom', () =>{
         expect(result).toMatch(/Abdulvoris/);
     });
 });
+
+describe('getCurrencies',()=>{
+    it('should return default currencies', ()=>{
+        const result = myLib.getCurrencies();
+        expect(result).toContain('UZB');
+        expect(result).toContain('ENG');
+        expect(result).toContain('RUS');
+        expect(result).toEqual(expect.arrayContaining(['ENG', 'UZB', 'RUS']));
+    });
+});
+
+describe('getProduct', ()=>{
+    it('should return product with the given id', ()=>{
+        const result = myLib.getProduct(11);
+        expect(result).toEqual({ id: 11, title:"banana", price: 2 });
+        expect(result).toMatchObject({ id: 11, price: 2 });
+        expect(result).toHaveProperty('price', 2);
+    });
+});
